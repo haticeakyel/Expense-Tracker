@@ -18,12 +18,12 @@ public class Employee {
 
         if (salary <= 1000){
             tax = 0;
-            System.out.println("There is no tax for " + getName());
+           // System.out.println("There is no tax for " + getName());
         }
         else{
 
             tax = (int)(salary*(3.0f/100.0f));
-            System.out.println("Tax for " + getName() + " is: " + tax);
+            //System.out.println("Tax for " + getName() + " is: " + tax);
 
 
         }
@@ -34,11 +34,11 @@ public class Employee {
         int bonus;
         if (workHours <= 40){
             bonus = 0;
-            System.out.println("There is no bonus for " + getName());
+           // System.out.println("There is no bonus for " + getName());
         }
         else{
             bonus = (workHours - 40) * 30;
-            System.out.println(getName() + " won "+ bonus + "₺ bonus money");
+           // System.out.println(getName() + " won "+ bonus + "₺ bonus money");
             }
 
         salary = salary + bonus;
@@ -46,7 +46,7 @@ public class Employee {
         return bonus;
     }
 
-    public void raiseSalary(){
+    public int raiseSalary(){
         int difference;
         int newSalary;
         difference = 2021 - hireYear;
@@ -56,7 +56,7 @@ public class Employee {
             int tax = employee.tax(getSalary());
             int bonus = employee.bonus(getSalary());
             setSalary(newSalary + bonus - tax);
-            System.out.println(getName() + "'s salary after addition is: " +salary);
+          //  System.out.println(getName() + "'s salary after addition is: " +salary);
         }
         else if(difference>=10 && difference<20){
             newSalary = salary + (int)(salary*10.0f/100.0f);
@@ -64,7 +64,7 @@ public class Employee {
             int tax = employee.tax(getSalary());
             int bonus = employee.bonus(getSalary());
             setSalary(newSalary + bonus - tax);
-            System.out.println(getName() + "'s salary after addition is: " +salary);
+           // System.out.println(getName() + "'s salary after addition is: " +salary);
 
         }
         else if(difference>=20){
@@ -73,25 +73,17 @@ public class Employee {
             int tax = employee.tax(getSalary());
             int bonus = employee.bonus(getSalary());
             setSalary(newSalary + bonus - tax);
-            System.out.println(getName() + "'s salary after addition is: " +salary);
+          //  System.out.println(getName() + "'s salary after addition is: " +salary);
+
 
         }
 
+        return salary;
     }
 
-    public void tostring(){
-        Employee employee = new Employee("Hatice", 7800,45,2013);
-        Employee employee1 = new Employee("Selma", 800,40,2009);
-        Employee employee2 = new Employee("Aslan", 10000,40,2000);
-        Employee employee3 = new Employee("Metin", 7500,40,2020);
-        System.out.println("Employee's name is: ");
-        employee.getName();
-        System.out.println("Employee's tax is: ");
-        System.out.println("Employee's bonus is: ");
-        System.out.println("The salary is: ");
-
-
-
+    public String toString(){
+        return "Name:" + name + " Salary:" + salary + " Work hours:" + workHours + " Hire year:" + hireYear + " Tax:" +tax(getSalary()) +
+               " Bonus:" + bonus(getSalary()) + " New salary after addition:" + raiseSalary();
     }
 
 
