@@ -13,7 +13,7 @@ public class Employee {
         this.setHireYear(hireYear);
     }
 
-    public void tax(){
+    public int tax(int salary){
         int tax;
 
         if (salary <= 1000){
@@ -27,9 +27,10 @@ public class Employee {
 
 
         }
+        return tax;
     }
 
-    public void bonus(){
+    public int bonus(int salary){
         int bonus;
         if (workHours <= 40){
             bonus = 0;
@@ -42,23 +43,36 @@ public class Employee {
 
         salary = salary + bonus;
 
+        return bonus;
     }
 
     public void raiseSalary(){
         int difference;
+        int newSalary;
         difference = 2021 - hireYear;
         if (difference < 10){
-            salary = salary + (int)(salary*5.0f/100.0f);
+            newSalary = salary + (int)(salary*5.0f/100.0f);
+            Employee employee = new Employee(getName(),getSalary(),getWorkHours(),getHireYear());
+            int tax = employee.tax(getSalary());
+            int bonus = employee.bonus(getSalary());
+            setSalary(newSalary + bonus - tax);
             System.out.println(getName() + "'s salary after addition is: " +salary);
-
         }
         else if(difference>=10 && difference<20){
-            salary = salary + (int)(salary*10.0f/100.0f);
+            newSalary = salary + (int)(salary*10.0f/100.0f);
+            Employee employee = new Employee(getName(),getSalary(),getWorkHours(),getHireYear());
+            int tax = employee.tax(getSalary());
+            int bonus = employee.bonus(getSalary());
+            setSalary(newSalary + bonus - tax);
             System.out.println(getName() + "'s salary after addition is: " +salary);
 
         }
         else if(difference>=20){
-            salary = salary + (int)(salary*(15.0f/100.0f));
+            newSalary = salary + (int)(salary*(15.0f/100.0f));
+            Employee employee = new Employee(getName(),getSalary(),getWorkHours(),getHireYear());
+            int tax = employee.tax(getSalary());
+            int bonus = employee.bonus(getSalary());
+            setSalary(newSalary + bonus - tax);
             System.out.println(getName() + "'s salary after addition is: " +salary);
 
         }
@@ -73,9 +87,7 @@ public class Employee {
         System.out.println("Employee's name is: ");
         employee.getName();
         System.out.println("Employee's tax is: ");
-        employee.tax();
         System.out.println("Employee's bonus is: ");
-        employee.bonus();
         System.out.println("The salary is: ");
 
 
