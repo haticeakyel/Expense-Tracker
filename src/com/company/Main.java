@@ -8,7 +8,9 @@ public class Main {
         Employee employee1 = new Employee("Selma", 800,40,2009);
         Employee employee2 = new Employee("Aslan", 10000,43,2000);
         Employee employee3 = new Employee("Metin", 7500,41,2020);
+        Employee employee4 = new Employee("Kemal", 2000,45,1985);
 
+        System.out.println(employee4);
         System.out.println(employee);
         System.out.println(employee1);
         System.out.println(employee2);
